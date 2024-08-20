@@ -37,8 +37,12 @@ class TestFrDepartment(TransactionCase):
 
     def test_corse(self):
         rpo = self.env["res.partner"]
-        corse2A = self.env.ref("l10n_fr_department.res_country_department_corsedusud")
-        corse2B = self.env.ref("l10n_fr_department.res_country_department_hautecorse")
+        corse2A = self.env.ref(
+            "l10n_fr_department.res_country_department_corsedusud"
+        )
+        corse2B = self.env.ref(
+            "l10n_fr_department.res_country_department_hautecorse"
+        )
         partner = rpo.create(
             {
                 "name": "name",

@@ -22,7 +22,9 @@ logger = logging.getLogger(__name__)
 
 
 def create_fr_state_xmlid(cr):
-    generic_create_state_xmlid(cr, "l10n_fr_state", "data/res_country_state.xml")
+    generic_create_state_xmlid(
+        cr, "l10n_fr_state", "data/res_country_state.xml"
+    )
 
 
 def generic_create_state_xmlid(cr, module_name, data_file):
@@ -35,13 +37,18 @@ def generic_create_state_xmlid(cr, module_name, data_file):
         data[xmlid] = {}
         for xfield in record.xpath("field"):
             xfield_dict = xfield.attrib
-            data[xmlid][xfield_dict["name"]] = xfield_dict.get("ref") or xfield.text
+            data[xmlid][xfield_dict["name"]] = (
+                xfield_dict.get("ref") or xfield.text
+            )
     logger.debug("generic_create_state_xmlid data=%s", data)
     env = api.Environment(cr, SUPERUSER_ID, {})
     for xmlid, state_data in data.items():
         country_id = env.ref(state_data["country_id"]).id
         state = env["res.country.state"].search(
-            [("code", "=", state_data["code"]), ("country_id", "=", country_id)],
+            [
+                ("code", "=", state_data["code"]),
+                ("country_id", "=", country_id),
+            ],
             limit=1,
         )
         if state:

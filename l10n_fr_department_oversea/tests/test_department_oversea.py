@@ -19,7 +19,9 @@ class TestFrDepartmentOversea(TransactionCase):
         )
         self.assertEqual(
             partner1.country_department_id,
-            self.env.ref("l10n_fr_department_oversea.res_country_department_reunion"),
+            self.env.ref(
+                "l10n_fr_department_oversea.res_country_department_reunion"
+            ),
         )
         # I also want it to work if you select France as country
         partner2 = rpo.create(
@@ -34,5 +36,7 @@ class TestFrDepartmentOversea(TransactionCase):
         )
         self.assertEqual(
             partner2.country_department_id,
-            self.env.ref("l10n_fr_department_oversea.res_country_department_reunion"),
+            self.env.ref(
+                "l10n_fr_department_oversea.res_country_department_reunion"
+            ),
         )

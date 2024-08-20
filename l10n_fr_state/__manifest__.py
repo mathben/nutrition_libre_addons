@@ -8,10 +8,9 @@
     "summary": "Populate Database with French States (Régions)",
     "version": "16.0.1.0.0",
     "category": "French Localization",
-    "author": "GRAP, "
-    "Akretion, "
-    "Nicolas JEUDY, "
-    "Odoo Community Association (OCA)",
+    "author": (
+        "GRAP, Akretion, Nicolas JEUDY, Odoo Community Association (OCA)"
+    ),
     "maintainers": ["legalsylvain"],
     "website": "https://github.com/OCA/l10n-france",
     "license": "AGPL-3",

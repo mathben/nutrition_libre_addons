@@ -62,14 +62,18 @@ class ResPartner(models.Model):
         # Else: group departments by zip code, assign them to the grouped
         # partners according to their common zip code
         else:
-            departments_by_code = dict(groupby(departments, key=lambda d: d.code))
+            departments_by_code = dict(
+                groupby(departments, key=lambda d: d.code)
+            )
             for zipcode, partner_list in partners_by_zipcode.items():
                 department = department_obj
                 if zipcode:
                     dep_code = zip2dep(zipcode)
                     if dep_code in departments_by_code:
                         department = departments_by_code[dep_code][0]
-                self.browse().concat(*partner_list).country_department_id = department
+                self.browse().concat(
+                    *partner_list
+                ).country_department_id = department
 
     @api.model
     @ormcache("zipcode")
